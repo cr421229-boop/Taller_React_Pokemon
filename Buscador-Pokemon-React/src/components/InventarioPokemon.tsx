@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { usePokemon} from '../context/PokemonContext';
+import { usePokemon, type Usuario } from '../context/PokemonContext';
 
-export const BuscadorPokemon: React.FC = () => {
+export const InventarioPokemon: React.FC = () => {
   const { resgistrarEntrenador } = usePokemon();
   const navigate = useNavigate();
 
@@ -34,6 +34,9 @@ export const BuscadorPokemon: React.FC = () => {
       },
       fechaNacimiento,
       correo,
+      celular,
+      pais,
+      ciudad,
       datosPersonales,
       fechaRegistro: new Date().toLocaleDateString(),
     };

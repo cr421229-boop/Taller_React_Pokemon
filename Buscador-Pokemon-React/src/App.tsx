@@ -4,7 +4,7 @@ import { RegistroUsuario } from './components/RegistroUsuario';
 import { BuscadorPokemon } from './components/BuscadorPokemon';
 import { InventarioPokemon } from './components/InventarioPokemon';
 
-export default function App() {
+function App() {
   return (
     <PokemonProvider>
       <BrowserRouter>
@@ -35,3 +35,4 @@ export default function App() {
     </PokemonProvider>
   );
 }
+export default App;

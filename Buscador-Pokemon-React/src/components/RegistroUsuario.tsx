@@ -34,6 +34,9 @@ export const RegistroUsuario: React.FC = () => {
       },
       fechaNacimiento,
       correo,
+      celular,
+      pais,
+      ciudad,
       datosPersonales,
       fechaRegistro: new Date().toLocaleDateString(),
     };
