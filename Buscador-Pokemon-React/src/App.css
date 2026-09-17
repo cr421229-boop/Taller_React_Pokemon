@@ -1,153 +1,250 @@
-body {
-  font-family: system-ui, -apple-system, sans-serif;
-  background-color: #f4f6f8;
-  margin: 0;
-  padding: 0;
-}
+/* BuscadorPokemon.css - estilo pastel "búsqueda", tonos lavanda/celeste */
 
-.navbar {
-  background-color: #ef5350;
-  color: white;
-  padding: 1rem 2rem;
+.buscador-container {
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 24px;
+  background-color: #eef2ff;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(150, 150, 220, 0.25);
+  font-family: 'Segoe UI', sans-serif;
   text-align: center;
 }
 
-.nav-links {
+.buscador-titulo {
+  color: #6b5ca5;
+  font-size: 1.6rem;
+  margin-bottom: 16px;
+}
+
+.buscador-form {
   display: flex;
+  gap: 8px;
   justify-content: center;
-  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.buscador-input {
+  flex: 1;
+  padding: 10px 14px;
+  border: 2px solid #c9c2f0;
+  border-radius: 999px;
+  outline: none;
+  font-size: 1rem;
+  background-color: #ffffff;
+}
+
+.buscador-input:focus {
+  border-color: #a394e0;
+}
+
+.buscador-boton {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 999px;
+  background-color: #b8a8f0;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.buscador-boton:hover {
+  background-color: #a394e0;
+}
+
+.buscador-card {
+  background-color: #ffffff;
+  border-radius: 16px;
+  padding: 20px;
+  margin-top: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.buscador-card-img {
+  width: 140px;
+  height: 140px;
+  object-fit: contain;
+  background-color: #f3f0ff;
+  border-radius: 50%;
+  padding: 10px;
+}
+
+.buscador-card-nombre {
+  color: #6b5ca5;
+  font-size: 1.3rem;
+  text-transform: capitalize;
   margin-top: 10px;
 }
 
-.nav-links a {
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-  padding: 8px 16px;
+.buscador-card-tipo {
+  display: inline-block;
+  background-color: #d6cdf7;
+  color: #4a3f7a;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  margin: 4px;
+}
+/* InventarioPokemon.css - estilo pastel "colección", tonos menta/durazno */
+
+.inventario-container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 24px;
+  background-color: #fff7ec;
   border-radius: 20px;
-  background-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 12px rgba(220, 190, 150, 0.25);
+  font-family: 'Segoe UI', sans-serif;
 }
 
-.nav-links a.active-tab {
-  background-color: white;
-  color: #ef5350;
+.inventario-titulo {
+  color: #d98a4f;
+  font-size: 1.6rem;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
-.form-container {
-  max-width: 650px;
-  margin: 2rem auto;
-  padding: 2rem;
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+.inventario-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 16px;
 }
 
-.form-row {
-  display: flex;
-  gap: 15px;
-  margin-bottom: 12px;
+.inventario-item {
+  background-color: #e8f7ee;
+  border-radius: 16px;
+  padding: 14px;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+  transition: transform 0.15s ease;
+  position: relative;
 }
 
-.form-group {
-  flex: 1;
+.inventario-item:hover {
+  transform: translateY(-4px);
+}
+
+.inventario-item-img {
+  width: 90px;
+  height: 90px;
+  object-fit: contain;
+}
+
+.inventario-item-nombre {
+  color: #4f9c73;
+  font-weight: bold;
+  text-transform: capitalize;
+  margin-top: 6px;
+}
+
+.inventario-item-cantidad {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background-color: #f7c9a0;
+  color: #6b3f1c;
+  font-size: 0.75rem;
+  font-weight: bold;
+  padding: 2px 8px;
+  border-radius: 999px;
+}
+
+.inventario-boton-quitar {
+  margin-top: 8px;
+  background-color: #f8b4b4;
+  border: none;
+  border-radius: 999px;
+  padding: 4px 12px;
+  color: #7a2e2e;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.inventario-boton-quitar:hover {
+  background-color: #f39a9a;
+}
+
+.inventario-vacio {
+  text-align: center;
+  color: #b98a5e;
+  font-style: italic;
+  padding: 20px;
+}
+/* RegistroUsuario.css - estilo pastel "formulario", tonos rosa/lila */
+
+.registro-container {
+  max-width: 400px;
+  margin: 60px auto;
+  padding: 30px;
+  background-color: #fff0f6;
+  border-radius: 20px;
+  box-shadow: 0 4px 14px rgba(220, 150, 190, 0.3);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.registro-titulo {
+  color: #b5568f;
+  font-size: 1.6rem;
+  text-align: center;
+  margin-bottom: 22px;
+}
+
+.registro-form {
   display: flex;
   flex-direction: column;
-  margin-bottom: 12px;
+  gap: 14px;
 }
 
-.form-group label {
-  font-weight: 600;
-  margin-bottom: 4px;
-}
-
-.form-group input,
-.form-group select {
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-}
-
-.checkbox-group {
-  margin: 15px 0;
-}
-
-.btn-submit,
-.btn-capturar {
-  background-color: #ef5350;
-  color: white;
-  border: none;
-  padding: 10px 16px;
-  border-radius: 6px;
-  font-weight: bold;
-  cursor: pointer;
-  width: 100%;
-}
-
-.btn-capturar {
-  background-color: #ff9800;
-  margin-top: 10px;
-}
-
-.banner-sesion {
-  background-color: #e3f2fd;
-  padding: 10px 15px;
-  border-radius: 8px;
-  margin-bottom: 15px;
-}
-
-.tarjeta-pokemon {
-  margin-top: 20px;
-  padding: 20px;
-  border-radius: 12px;
-  text-align: center;
-  border: 2px solid #2a75bb;
-  background-color: #fafafa;
-}
-
-.grid-mochila {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: 15px;
-  margin-top: 20px;
-}
-
-.tarjeta-item {
-  background: white;
-  padding: 15px;
-  border-radius: 12px;
-  border: 1px solid #e0e0e0;
-  text-align: center;
-}
-
-.tarjeta-favorita {
-  background-color: #fffde7;
-  border: 2px solid #fbc02d;
-}
-
-.panel-botones {
+.registro-campo {
   display: flex;
-  justify-content: space-around;
-  margin-top: 10px;
+  flex-direction: column;
+  gap: 4px;
 }
 
-.btn-fav {
-  background: #eee;
-  border: 1px solid #ccc;
-  padding: 4px 8px;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.btn-fav.fav-activo {
-  background: #fbc02d;
+.registro-label {
+  color: #a34f7d;
+  font-size: 0.85rem;
   font-weight: bold;
 }
 
-.btn-eliminar {
-  background: #ef5350;
-  color: white;
+.registro-input {
+  padding: 10px 14px;
+  border: 2px solid #f3c6dd;
+  border-radius: 12px;
+  outline: none;
+  font-size: 1rem;
+  background-color: #ffffff;
+}
+
+.registro-input:focus {
+  border-color: #e3a0c4;
+}
+
+.registro-boton {
+  margin-top: 10px;
+  padding: 12px;
   border: none;
-  padding: 4px 8px;
-  border-radius: 4px;
+  border-radius: 999px;
+  background-color: #f0a8cb;
+  color: white;
+  font-weight: bold;
   cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.registro-boton:hover {
+  background-color: #e38fb7;
+}
+
+.registro-mensaje-error {
+  color: #c94f4f;
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+.registro-mensaje-exito {
+  color: #4f9c73;
+  font-size: 0.85rem;
+  text-align: center;
 }

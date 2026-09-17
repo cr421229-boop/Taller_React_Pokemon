@@ -8,7 +8,7 @@ export const InventarioPokemon: React.FC = () =>{
 
         if(!entrenadorActivo){
           return(
-            <div>
+            <div className="banner-seccion">
               <h3> No Hay Entrenador </h3>
               <p>Por favor asigne <strong>entrenador activo</strong> o <strong>registre un entrenador</strong></p>
             </div>
@@ -44,7 +44,7 @@ return(
           </div>
         ))
         ) : (
-          <div>
+          <div className="banner-seccion">
             <p> Tu mochila está vacía actualmente</p>
             <p> vaya y capture pokemon, papi </p>
           </div>

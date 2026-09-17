@@ -58,30 +58,33 @@ export const BuscadorPokemon: React.FC = () =>{
 
 
 return(
-<div className=" ">
-    <div>
+<div className="buscador-container">
+    <div className="buscador-estado">
         {entrenadorActivo ? (
             <p>Mochila Activa de: <strong>{entrenadorActivo.nombreCompleto}</strong></p>
         ) : (
             <p>No hay entrenador Activo. Ve al formulario de Registro para activarlo, socio.</p>
         )}
-    </div><form onSubmit={buscarPokemon}>
+    </div><form className="buscador-form" onSubmit={buscarPokemon}>
             <div>
                 <label>Buscar Pokemon</label>
-                <input type="text" value={busqueda} onChange={(e) => setBusqueda(e.target.value)}></input>
+                <input className="buscador-input" type="text" value={busqueda} onChange={(e) => setBusqueda(e.target.value)}></input>
             </div>
-            <button type='submit' disabled={cargando}> {cargando ? 'Escaneando...' : 'Buscar'}
+            <button className="buscador-boton" type='submit' disabled={cargando}> {cargando ? 'Escaneando...' : 'Buscar'}
             </button>
         </form>
 
+        {mensajeError && (
+          <p className="buscador-error">{mensajeError}</p>
+        )}
 
       {pokemonActual && (
-    <div>
-        <h3>{pokemonActual.name}</h3>
-        <img src={pokemonActual.image}></img>
+    <div className="buscador-card">
+        <h3 className="buscador-card-nombre">{pokemonActual.name}</h3>
+        <img className="buscador-card-img" src={pokemonActual.image}></img>
         <p>
             Elemento: {''}
-            <span style={{
+            <span className="buscador-card-tipo" style={{
                 backgroundColor:
                     pokemonActual.type === 'fire' ? '#ff0000' : 
                     pokemonActual.type === 'water' ? '#3cb7e7' :
@@ -96,7 +99,7 @@ return(
 
             </span>
         </p>
-        <p>Experiencia Base: <strong>{pokemonActual.baseExperience}</strong></p>
+        <p className="buscador-card-experiencia">Experiencia Base: <strong>{pokemonActual.baseExperience}</strong></p>
         <button type="button" className="btn-capturar" onClick={clickGuardar} disabled={!entrenadorActivo}>
             Guardar en la Mochila</button>
 
