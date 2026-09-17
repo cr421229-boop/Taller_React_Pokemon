@@ -48,6 +48,7 @@ export const RegistroUsuario: React.FC = () => {
   return (
   <div>
     <div>
+      
       <form onSubmit={eventoSubmit}>
         <div className="Nombre">
           <label htmlFor="nombre">Nombre:</label><br />

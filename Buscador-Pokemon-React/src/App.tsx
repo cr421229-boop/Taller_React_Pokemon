@@ -32,7 +32,7 @@ function App() {
           </Routes>
         </main>
       </BrowserRouter>
-    </PokemonProvider>
+    </PokemonProvider> 
   );
 }
 export default App;
