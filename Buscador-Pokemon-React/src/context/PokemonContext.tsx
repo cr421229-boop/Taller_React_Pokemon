@@ -71,11 +71,16 @@ export const PokemonProvider : React.FC<{ children : React.ReactNode}> = ({ chil
         localStorage.setItem('lista_entrenadores',JSON.stringify(actualizados));
         seleccionarEntrenador(nuevoUsuario);
     };
-    const guardarPokemonMochila = (pokemon: PokemonTarjeta) =>{
-        if(!entrenadorActivo) return;
-        const actualizada = [...mochilaActual, {...pokemon, esFavorito: false}];
-        setMochilaActual(actualizada);
-        localStorage.setItem(`mochila_${entrenadorActivo.id}`, JSON.stringify(actualizada));
+    const guardarPokemonMochila = (pokemon: PokemonTarjeta) => {
+        if (!entrenadorActivo) return;
+
+        const key = `mochila_${entrenadorActivo.id}`;
+        const dataActual = localStorage.getItem(key);
+        const mochilaReal: PokemonTarjeta[] = dataActual ? JSON.parse(dataActual) : [];
+
+        const actualizada = [...mochilaReal, { ...pokemon, esFavorito: false }];
+        localStorage.setItem(key, JSON.stringify(actualizada));
+        setMochilaActual(actualizada); // ahora sí sincronizás el estado con lo que quedó guardado
     };
 
     const actualizarFavorito =(pokemonId: number) =>{
@@ -85,12 +90,24 @@ export const PokemonProvider : React.FC<{ children : React.ReactNode}> = ({ chil
 
     };
 
-    const eliminarPokemon =(pokemonId : number) =>{
-        if(!entrenadorActivo) return;
-        const filtrado = mochilaActual.filter(p=>p.id !== pokemonId); 
-        setMochilaActual(filtrado);
-        localStorage.setItem(`mochila_${entrenadorActivo.id}`, JSON.stringify(filtrado));
+    const eliminarPokemon = (pokemonId: number) => {
+        if (!entrenadorActivo) return;
 
+        const key = `mochila_${entrenadorActivo.id}`;
+
+        const dataActual = localStorage.getItem(key);
+        const mochilaReal: PokemonTarjeta[] = dataActual ? JSON.parse(dataActual) : [];
+
+        const existe = mochilaReal.some(p => p.id === pokemonId);
+        if (!existe) {
+            console.warn(`El Pokemon ${pokemonId} ya no existe en la base de datos`);
+            setMochilaActual(mochilaReal); 
+            return;
+        }
+
+        const filtrado = mochilaReal.filter(p => p.id !== pokemonId);
+        localStorage.setItem(key, JSON.stringify(filtrado));
+        setMochilaActual(filtrado);
     };
    return (
         <PokemonContext.Provider value={{

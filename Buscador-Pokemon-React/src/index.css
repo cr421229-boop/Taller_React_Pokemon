@@ -1,424 +1,111 @@
-/* ============================================
-   VARIABLES GLOBALES - Tema Morado
-============================================ */
 :root {
-  --morado-oscuro: #8266c4;
-  --morado: #a888e0;
-  --morado-medio: #bda3ea;
-  --morado-claro: #d6c3f3;
-  --morado-pastel: #f4edfc;
-  --lila-fondo: #f0e6fb;
-  --blanco: #ffffff;
-  --gris-oscuro: #382a4a;
-  --gris-medio: #d8c9ee;
-  --sombra: 0 6px 16px rgba(74, 26, 107, 0.18);
-  --radio: 16px;
+  --text: #6b6375;
+  --text-h: #08060d;
+  --bg: #fff;
+  --border: #e5e4e7;
+  --code-bg: #f4f3ec;
+  --accent: #aa3bff;
+  --accent-bg: rgba(170, 59, 255, 0.1);
+  --accent-border: rgba(170, 59, 255, 0.5);
+  --social-bg: rgba(244, 243, 236, 0.5);
+  --shadow:
+    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+
+  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --mono: ui-monospace, Consolas, monospace;
+
+  font: 18px/145% var(--sans);
+  letter-spacing: 0.18px;
+  color-scheme: light dark;
+  color: var(--text);
+  background: var(--bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  @media (max-width: 1024px) {
+    font-size: 16px;
+  }
 }
 
-* {
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: #9ca3af;
+    --text-h: #f3f4f6;
+    --bg: #16171d;
+    --border: #2e303a;
+    --code-bg: #1f2028;
+    --accent: #c084fc;
+    --accent-bg: rgba(192, 132, 252, 0.15);
+    --accent-border: rgba(192, 132, 252, 0.5);
+    --social-bg: rgba(47, 48, 58, 0.5);
+    --shadow:
+      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
+  }
+
+  #social .button-icon {
+    filter: invert(1) brightness(2);
+  }
+}
+
+#root {
+  width: 1126px;
+  max-width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  border-inline: 1px solid var(--border);
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
   box-sizing: border-box;
 }
 
 body {
-  background: linear-gradient(180deg, #f6f0fd 0%, #e7d9f9 100%);
-  font-family: 'Segoe UI', system-ui, sans-serif;
-  color: var(--gris-oscuro);
   margin: 0;
-  padding: 20px;
 }
 
-/* ============================================
-   MENSAJES / BANNERS GENERALES
-============================================ */
-.banner-seccion {
-  background: var(--blanco);
-  border: 2px dashed var(--morado-claro);
-  border-radius: var(--radio);
-  padding: 30px;
-  text-align: center;
-  max-width: 480px;
-  margin: 40px auto;
-  color: var(--morado-oscuro);
+h1,
+h2 {
+  font-family: var(--heading);
+  font-weight: 500;
+  color: var(--text-h);
 }
 
-/* Botón morado reutilizable como base para todos los botones principales */
-.registro-boton,
-.buscador-boton,
-.btn-capturar {
-  background: linear-gradient(135deg, var(--morado) 0%, var(--morado-oscuro) 100%);
-  color: var(--blanco);
-  border: none;
-  font-weight: 700;
-  cursor: pointer;
-  transition: transform 0.15s ease, box-shadow 0.2s ease;
-  box-shadow: 0 4px 10px rgba(74, 26, 107, 0.3);
+h1 {
+  font-size: 56px;
+  letter-spacing: -1.68px;
+  margin: 32px 0;
+  @media (max-width: 1024px) {
+    font-size: 36px;
+    margin: 20px 0;
+  }
+}
+h2 {
+  font-size: 24px;
+  line-height: 118%;
+  letter-spacing: -0.24px;
+  margin: 0 0 8px;
+  @media (max-width: 1024px) {
+    font-size: 20px;
+  }
+}
+p {
+  margin: 0;
 }
 
-.registro-boton:hover,
-.buscador-boton:hover,
-.btn-capturar:hover:not(:disabled) {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 14px rgba(74, 26, 107, 0.4);
+code,
+.counter {
+  font-family: var(--mono);
+  display: inline-flex;
+  border-radius: 4px;
+  color: var(--text-h);
 }
 
-/* ============================================
-   REGISTRO DE ENTRENADOR — estilo "ficha lateral"
-============================================ */
-.registro-container {
-  max-width: 540px;
-  margin: 0 auto 40px auto;
-  background: var(--blanco);
-  border-left: 6px solid var(--morado);
-  border-radius: 6px 20px 20px 6px;
-  box-shadow: var(--sombra);
-  padding: 32px 38px;
-}
-
-.registro-titulo {
-  text-align: left;
-  color: var(--morado-oscuro);
-  margin-bottom: 22px;
-  font-weight: 800;
-  letter-spacing: 0.4px;
-  border-bottom: 2px solid var(--morado-pastel);
-  padding-bottom: 10px;
-}
-
-.registro-subtitulo {
-  margin-top: 30px;
-  color: var(--morado);
-  border-top: 1px solid var(--gris-medio);
-  padding-top: 15px;
-}
-
-.registro-form {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-
-.registro-campo {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.registro-label {
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--morado-oscuro);
-}
-
-.registro-input {
-  padding: 10px 12px;
-  border: 1.5px solid var(--gris-medio);
-  border-radius: 8px;
-  font-size: 0.95rem;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
-  background: var(--morado-pastel);
-}
-
-.registro-input:focus {
-  outline: none;
-  border-color: var(--morado);
-  box-shadow: 0 0 0 3px rgba(111, 45, 189, 0.2);
-  background: var(--blanco);
-}
-
-.registro-checkbox-campo {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 0.85rem;
-  margin-top: 4px;
-}
-
-.registro-boton {
-  margin-top: 10px;
-  padding: 12px;
-  border-radius: 10px;
-  font-size: 1rem;
-}
-
-.registro-entrenadores {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 10px;
-}
-
-.registro-entrenador-boton {
-  border: none;
-  border-radius: 20px;
-  cursor: pointer;
-  font-weight: 600;
-  font-size: 0.85rem;
-  transition: transform 0.15s ease;
-}
-
-.registro-entrenador-boton:hover {
-  transform: scale(1.05);
-}
-
-/* ============================================
-   BUSCADOR DE POKÉMON — estilo "tarjeta flotante centrada"
-============================================ */
-.buscador-container {
-  max-width: 460px;
-  margin: 0 auto 40px auto;
-  background: var(--blanco);
-  border-radius: 28px;
-  box-shadow: var(--sombra);
-  padding: 34px;
-  text-align: center;
-  border: 1px solid var(--morado-pastel);
-}
-
-.buscador-estado {
-  margin-bottom: 16px;
-  font-size: 0.9rem;
-  color: var(--morado);
-  font-weight: 600;
-}
-
-.buscador-form {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  align-items: stretch;
-}
-
-.buscador-input {
-  padding: 13px 16px;
-  border: 2px solid var(--morado-claro);
-  border-radius: 40px;
-  font-size: 1rem;
-  text-align: center;
-  background: var(--morado-pastel);
-}
-
-.buscador-input:focus {
-  outline: none;
-  border-color: var(--morado);
-  background: var(--blanco);
-  box-shadow: 0 0 0 4px rgba(111, 45, 189, 0.15);
-}
-
-.buscador-boton {
-  padding: 13px;
-  border-radius: 40px;
-}
-
-.buscador-boton:disabled {
-  background: var(--gris-medio);
-  box-shadow: none;
-  cursor: not-allowed;
-}
-
-.buscador-error {
-  color: #a12ea3;
-  font-weight: 600;
-  margin-top: 14px;
-}
-
-.buscador-card {
-  margin-top: 26px;
-  border-radius: 22px;
-  padding: 22px;
-  background: var(--lila-fondo);
-  border: 2px solid var(--morado-claro);
-  animation: aparecer 0.3s ease;
-}
-
-@keyframes aparecer {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.buscador-card-nombre {
-  font-size: 1.3rem;
-  font-weight: 800;
-  color: var(--morado-oscuro);
-  margin-bottom: 6px;
-}
-
-.buscador-card-img {
-  width: 130px;
-  height: 130px;
-  image-rendering: pixelated;
-  filter: drop-shadow(0 4px 6px rgba(74, 26, 107, 0.25));
-}
-
-.buscador-card-tipo {
-  display: inline-block;
-  font-size: 0.8rem;
-  font-weight: 700;
-}
-
-.buscador-card-experiencia {
-  margin-top: 8px;
-  font-size: 0.9rem;
-  color: var(--gris-oscuro);
-}
-
-/* Botón "Guardar en la mochila" — variante destacada dentro del morado */
-.btn-capturar {
-  margin-top: 18px;
-  padding: 12px 24px;
-  border-radius: 40px;
-  background: linear-gradient(135deg, var(--morado-medio) 0%, var(--morado-oscuro) 100%);
-  font-size: 0.95rem;
-  letter-spacing: 0.3px;
-}
-
-.btn-capturar:disabled {
-  background: var(--gris-medio);
-  box-shadow: none;
-  cursor: not-allowed;
-}
-
-/* ============================================
-   INVENTARIO / MOCHILA — estilo "recuadros en cuadrícula"
-============================================ */
-.grid-mochila {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
-  gap: 20px;
-  max-width: 940px;
-  margin: 20px auto;
-  padding: 0 10px;
-}
-
-.tarjeta-item {
-  background: var(--blanco);
-  border: 2.5px solid var(--morado-claro);
-  border-radius: 18px;
-  padding: 18px;
-  text-align: center;
-  position: relative;
-  box-shadow: var(--sombra);
-  transition: transform 0.15s ease, border-color 0.2s ease;
-}
-
-.tarjeta-item:hover {
-  transform: translateY(-4px);
-  border-color: var(--morado);
-}
-
-.tarjeta-item span {
-  display: block;
-  font-size: 0.75rem;
-  color: var(--morado);
-  font-weight: 600;
-  margin-bottom: 4px;
-}
-
-.tarjeta-item img {
-  width: 90px;
-  height: 90px;
-  image-rendering: pixelated;
-}
-
-.tarjeta-item h4 {
-  margin: 6px 0 2px 0;
-  color: var(--morado-oscuro);
-}
-
-.tarjeta-favorita {
-  border: 3px solid var(--morado-oscuro);
-  background: var(--morado-pastel);
-}
-
-.panel-botones {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  margin-top: 12px;
-}
-
-.btn-favorito {
-  background: var(--morado-pastel);
-  border: 1.5px solid var(--morado-claro);
-  color: var(--morado-oscuro);
-  border-radius: 20px;
-  padding: 6px 10px;
-  font-size: 0.8rem;
-  cursor: pointer;
-  transition: background 0.2s ease;
-}
-
-.btn-favorito.fav-activo {
-  background: var(--morado);
-  border-color: var(--morado);
-  color: var(--blanco);
-  font-weight: 700;
-}
-
-.btn-eliminar {
-  background: var(--blanco);
-  color: var(--morado-oscuro);
-  border: 1.5px solid var(--morado-oscuro);
-  border-radius: 20px;
-  padding: 6px 10px;
-  font-size: 0.8rem;
-  cursor: pointer;
-  transition: background 0.2s ease, color 0.2s ease;
-}
-
-.btn-eliminar:hover {
-  background: var(--morado-oscuro);
-  color: var(--blanco);
-}
-
-/* ============================================
-   HEADER / NAVEGACIÓN PRINCIPAL
-============================================ */
-body {
-  padding: 0;
-}
-
-header {
-  background: var(--lila-fondo);
-  padding: 30px 40px 22px 40px;
-  border-bottom: 1px solid var(--gris-medio);
-  text-align: center;
-}
-
-header h1 {
-  margin: 0 0 16px 0;
-  color: var(--morado-oscuro);
-  font-size: 1.9rem;
-  font-weight: 800;
-}
-
-header nav {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-}
-
-header nav a {
-  text-decoration: none;
-  color: var(--morado);
-  font-weight: 700;
-  font-size: 0.95rem;
-  padding: 8px 20px;
-  border-radius: 30px;
-  border: 2px solid transparent;
-  background: var(--blanco);
-  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
-}
-
-header nav a:hover {
-  border-color: var(--morado-claro);
-}
-
-header nav a.active-tab {
-  background: linear-gradient(135deg, var(--morado) 0%, var(--morado-oscuro) 100%);
-  color: var(--blanco);
-  box-shadow: 0 4px 10px rgba(74, 26, 107, 0.3);
-}
-
-main {
-  padding: 30px 20px;
+code {
+  font-size: 15px;
+  line-height: 135%;
+  padding: 4px 8px;
+  background: var(--code-bg);
 }
