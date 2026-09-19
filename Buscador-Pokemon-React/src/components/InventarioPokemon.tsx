@@ -13,6 +13,7 @@ export const InventarioPokemon: React.FC = () =>{
               <p>Por favor asigne <strong>entrenador activo</strong> o <strong>registre un entrenador</strong></p>
             </div>
           );}
+       
   
 
 

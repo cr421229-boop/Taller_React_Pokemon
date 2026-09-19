@@ -33,6 +33,7 @@ interface PokemonContextType {
     eliminarPokemon : (pokemonId : number ) => void;
 };
 
+
 const PokemonContext = createContext<PokemonContextType | undefined> (undefined);
 
 export const PokemonProvider : React.FC<{ children : React.ReactNode}> = ({ children }) => {
@@ -52,7 +53,8 @@ export const PokemonProvider : React.FC<{ children : React.ReactNode}> = ({ chil
                 if(encontrado) seleccionarEntrenador(encontrado);
             }
         }
-    },[]);
+    },
+    []);
 
     const cargarMochilaEntrnador = (usuarioId:number) =>{
         const data = localStorage.getItem(`mochila_${usuarioId}`);

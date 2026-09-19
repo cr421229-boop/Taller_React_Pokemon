@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import {usePokemon, type PokemonTarjeta } from '../context/PokemonContext'
+import { useNavigate } from 'react-router-dom';
 
 export const BuscadorPokemon: React.FC = () =>{
 
     const { entrenadorActivo, guardarPokemonMochila } = usePokemon();
+    const navigate = useNavigate();
 
     const [busqueda, setBusqueda] = useState('');
     const [pokemonActual, setPokemonActual] = useState<PokemonTarjeta | null>(null);
@@ -24,6 +26,7 @@ export const BuscadorPokemon: React.FC = () =>{
             const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${query}`);
             if(!res.ok) throw new Error('Auxilio, Socorro, no hay Pokemon');
 
+
             const datos = await res.json();
             setPokemonActual({
                 id: datos.id,
@@ -36,10 +39,12 @@ export const BuscadorPokemon: React.FC = () =>{
         } catch (error: any) {
             setPokemonActual(null);
             setMensajeError(error.message);
+            
         } finally {
             setCargando(false);
         }
 
+        
     };
     const clickGuardar =() =>{
 
@@ -52,7 +57,13 @@ export const BuscadorPokemon: React.FC = () =>{
         if(pokemonActual){
             guardarPokemonMochila(pokemonActual);
             alert(`El Pokemon ${pokemonActual.name} es guardado en la mochila de ${entrenadorActivo?.nombreCompleto}`);
-    }
+            setPokemonActual(null);
+            setBusqueda('');
+            navigate('/inventario');
+            
+        }
+
+
     }
 
 
