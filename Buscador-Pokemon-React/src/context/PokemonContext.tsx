@@ -80,13 +80,14 @@ export const PokemonProvider : React.FC<{ children : React.ReactNode}> = ({ chil
 
         const actualizada = [...mochilaReal, { ...pokemon, esFavorito: false }];
         localStorage.setItem(key, JSON.stringify(actualizada));
-        setMochilaActual(actualizada); // ahora sí sincronizás el estado con lo que quedó guardado
+        setMochilaActual(actualizada); 
     };
 
     const actualizarFavorito =(pokemonId: number) =>{
         if(!entrenadorActivo) return;
         const actualizada = mochilaActual.map(p => p.id === pokemonId ? {...p,esFavorito: !p.esFavorito}: p);
         localStorage.setItem(`mochila_${entrenadorActivo.id}`, JSON.stringify(actualizada));
+        setMochilaActual(actualizada);
 
     };
 
